@@ -5,7 +5,7 @@
 #
 # @author webworker01
 #
-scriptpath="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+scriptpath="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
 
 if [[ ! -f ${scriptpath}/config ]]; then
     read -p "No config file detected, do you want to set one up? (y/n)" -n 1 -r
@@ -17,15 +17,15 @@ if [[ ! -f ${scriptpath}/config ]]; then
         read -p "Generate random wallet passphrase? (y/n)" -n 1 -r
         echo
         if [[ $REPLY =~ ^[Yy]$ ]]; then
-          generated_passphrase=$(rand)
-          sed -i "s/passphrase=\"\"/passphrase=${generated_passphrase}/g" ${scriptpath}/config
+            generated_passphrase=$(rand)
+            sed -i "s/passphrase=\"\"/passphrase=${generated_passphrase}/g" ${scriptpath}/config
         fi
 
         read -p "Generate random rpc userpass? (y/n)" -n 1 -r
         echo
         if [[ $REPLY =~ ^[Yy]$ ]]; then
-          generated_userpass=$(rand)
-          sed -i "s/userpass=/userpass=${generated_userpass}/g" ${scriptpath}/config
+            generated_userpass=$(rand)
+            sed -i "s/userpass=/userpass=${generated_userpass}/g" ${scriptpath}/config
         fi
     fi
 else
@@ -50,7 +50,8 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
     cargo build --features native -vv
 
     cd $scriptpath
-    git clone https://github.com/komodoplatform/coins.git
+    #git clone https://github.com/komodoplatform/coins.git
+    git submodule update --init --recursive
 fi
 
 read -p "Install cipi's mmtools/mpm and dependencies? (y/n)" -n 1 -r

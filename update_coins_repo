@@ -1,0 +1,12 @@
+#!/bin/bash
+#
+# Setup and build
+# https://github.com/KomodoPlatform/atomicDEX-API#how-to-build
+#
+# @author webworker01
+# @author gcharang
+
+scriptpath="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
+
+cd $scriptpath
+git submodule update --remote --merge
