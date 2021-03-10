@@ -19,7 +19,7 @@ Developed & tested on Ubuntu 18.04
 
 ```
 cd ~
-git clone https://github.com/webworker01/mmtools.git
+git clone --recurse-submodules https://github.com/gcharang/mmtools.git
 cd ~/mmtools
 
 #build atomicDEX-API
